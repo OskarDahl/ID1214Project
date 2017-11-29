@@ -17,6 +17,10 @@ public class Door extends Terrain{
         open = o;
     }
     
+    public void toggle(){
+        open=!open;
+    }
+    
     @Override
     public boolean passable() {
         return open;

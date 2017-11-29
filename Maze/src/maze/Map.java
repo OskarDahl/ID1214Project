@@ -13,6 +13,8 @@ public class Map {
     
     Terrain[][] terrainMap;
     
+    Player player;
+    
     String[] charMap = {
         "XXXXXX XXXXXX",
         "X   X   XXXXX",
@@ -22,7 +24,7 @@ public class Map {
         "X   X   X   X",
         "X       _ / X",
         "X   X   X   X",
-        "XXXXXX XXXXXX"
+        "XXXXXXpXXXXXX"
     };
     
     public Map(){
@@ -41,6 +43,9 @@ public class Map {
                         break;
                     case '_': terrainMap[x][y] = new Door(true);
                         break;
+                    case 'p': terrainMap[x][y] = new Floor();
+                        player = new Player(x,y);
+                        break;
                     default: System.out.println("[Map/constructor]: YOU DIED");
                 }
             }
@@ -51,9 +56,20 @@ public class Map {
     public void draw(){
         for (int y = 0; y < terrainMap[0].length; y++){
             for (int x = 0; x<terrainMap.length;x++){
-                terrainMap[x][y].print();
+                if(x==player.getX()&&y==player.getY())
+                    player.print();
+                else
+                    terrainMap[x][y].print();
             }
             System.out.println();
         }
+    }
+    
+    public boolean passable(int x, int y){
+        return terrainMap[x][y].passable();
+    }
+    
+    public void toggleDoors(){
+        
     }
 }
