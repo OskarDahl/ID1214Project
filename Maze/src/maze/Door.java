@@ -31,7 +31,7 @@ public class Door extends Terrain{
     }
 
     @Override
-    public void interract() {
+    public void interact() {
         // does nothing on purpose
     }
     
