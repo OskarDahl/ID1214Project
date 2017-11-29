@@ -30,4 +30,12 @@ public class Player {
     public void print(){
         System.out.print("P");
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

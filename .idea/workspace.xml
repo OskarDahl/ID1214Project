@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf1865fe-c260-4b14-9e24-3a1eda309acc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maze/src/maze/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maze/src/maze/Player.java" afterPath="$PROJECT_DIR$/Maze/src/maze/Player.java" />
     </list>
     <ignored path="ID1214Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +65,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Maze/src/maze/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+            <state relative-caret-position="684">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="17" />
               <folding>
                 <element signature="e#210#211#0" expanded="true" />
                 <element signature="e#237#238#0" expanded="true" />
@@ -79,6 +78,10 @@
                 <element signature="e#404#405#0" expanded="true" />
                 <element signature="e#430#431#0" expanded="true" />
                 <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+                <element signature="e#565#566#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -671,12 +674,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511957845828</updated>
-      <workItem from="1511957849944" duration="4573000" />
+      <workItem from="1511957849944" duration="4960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4573000" />
+    <option name="totallyTimeSpent" value="4960000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="24" width="1863" height="1056" extended-state="6" />
@@ -786,8 +789,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Maze/src/maze/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        <state relative-caret-position="684">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="17" />
           <folding>
             <element signature="e#210#211#0" expanded="true" />
             <element signature="e#237#238#0" expanded="true" />
@@ -799,6 +802,10 @@
             <element signature="e#404#405#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
             <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
           </folding>
         </state>
       </provider>
