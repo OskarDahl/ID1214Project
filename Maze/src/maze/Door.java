@@ -9,26 +9,30 @@ package maze;
  *
  * @author Theo
  */
-public class Wall extends Terrain {
+public class Door extends Terrain{
 
+    boolean open;
+    
+    public Door(boolean o){
+        open = o;
+    }
+    
     @Override
     public boolean passable() {
-        return false;
+        return open;
     }
 
     @Override
     public void print() {
-        System.out.print("X");
+        if(open)
+            System.out.print("_");
+        else
+            System.out.print("[");
     }
 
     @Override
-<<<<<<< HEAD
-    public void interact() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-=======
     public void interract() {
-        // Does nothing. On purpose
->>>>>>> 6d22a76d0a4e7f1da398dfe20c2b36e01bcdb388
+        // does nothing on purpose
     }
     
 }
