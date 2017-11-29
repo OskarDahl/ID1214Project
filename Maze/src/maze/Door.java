@@ -9,21 +9,30 @@ package maze;
  *
  * @author Theo
  */
-public class Wall extends Terrain {
+public class Door extends Terrain{
 
+    boolean open;
+    
+    public Door(boolean o){
+        open = o;
+    }
+    
     @Override
     public boolean passable() {
-        return false;
+        return open;
     }
 
     @Override
     public void print() {
-        System.out.print("X");
+        if(open)
+            System.out.print("_");
+        else
+            System.out.print("[");
     }
 
     @Override
     public void interract() {
-        // Does nothing. On purpose
+        // does nothing on purpose
     }
     
 }
