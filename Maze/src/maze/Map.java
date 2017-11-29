@@ -72,4 +72,29 @@ public class Map {
     public void toggleDoors(){
         
     }
+
+    public void moveUp(){
+        if (terrainMap[player.getX()][player.getY() - 1].passable())
+        {
+            player.moveUp();
+        }
+    }
+    public void moveDown(){
+        if (terrainMap[player.getX()][player.getY() + 1].passable())
+        {
+            player.moveDown();
+        }
+    }
+    public void moveLeft(){
+        if (terrainMap[player.getX() - 1][player.getY()].passable())
+        {
+            player.moveLeft();
+        }
+    }
+    public void moveRight(){
+        if (terrainMap[player.getX() + 1][player.getY()].passable())
+        {
+            player.moveRight();
+        }
+    }
 }
