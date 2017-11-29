@@ -15,7 +15,9 @@ public class Maze {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Map m = new Map();
+        m.draw();
     }
     
 }
