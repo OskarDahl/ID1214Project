@@ -7,7 +7,7 @@ package maze;
 
 /**
  *
- * @author Theo
+ * @author Theo och Oskar
  */
 public class Maze {
 

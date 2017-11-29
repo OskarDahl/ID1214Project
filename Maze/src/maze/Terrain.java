@@ -15,5 +15,5 @@ public abstract class Terrain {
     
     public abstract void print();
     
-    public abstract void interract();
+    public abstract void interact();
 }

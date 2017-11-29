@@ -22,7 +22,7 @@ public class Wall extends Terrain {
     }
 
     @Override
-    public void interract() {
+    public void interact() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
