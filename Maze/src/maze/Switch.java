@@ -1,9 +1,13 @@
 package maze;
 
+import java.util.LinkedList;
+
 /**
  * Created by oskar on 2017-11-29.
  */
 public class Switch extends Terrain{
+
+    static LinkedList<Door> doors=new LinkedList<Door>();
     boolean toggled = false;
 
     @Override
@@ -22,6 +26,13 @@ public class Switch extends Terrain{
     @Override
     public void interact() {
         toggled = !toggled;
-        //TODO toggle doors
+        for (Door door : doors
+             ) {
+            door.toggle();
+        }
+    }
+
+    public static void addDoor(Door door){
+        doors.add(door);
     }
 }

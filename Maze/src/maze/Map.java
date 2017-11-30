@@ -39,9 +39,13 @@ public class Map {
                         break;
                     case '/': terrainMap[x][y] = new Switch();
                         break;
-                    case '[': terrainMap[x][y] = new Door(false);
+                    case '[': Door closedDoor = new Door(false);
+                        terrainMap[x][y] = closedDoor;
+                        Switch.addDoor(closedDoor);
                         break;
-                    case '_': terrainMap[x][y] = new Door(true);
+                    case '_': Door openDoor = new Door(true);
+                        terrainMap[x][y] = openDoor;
+                        Switch.addDoor(openDoor);
                         break;
                     case 'p': terrainMap[x][y] = new Floor();
                         player = new Player(x,y);
@@ -68,33 +72,34 @@ public class Map {
     public boolean passable(int x, int y){
         return terrainMap[x][y].passable();
     }
-    
-    public void toggleDoors(){
-        
-    }
+
 
     public void moveUp(){
         if (terrainMap[player.getX()][player.getY() - 1].passable())
         {
             player.moveUp();
+            terrainMap[player.getX()][player.getY()].interact();
         }
     }
     public void moveDown(){
         if (terrainMap[player.getX()][player.getY() + 1].passable())
         {
             player.moveDown();
+            terrainMap[player.getX()][player.getY()].interact();
         }
     }
     public void moveLeft(){
         if (terrainMap[player.getX() - 1][player.getY()].passable())
         {
             player.moveLeft();
+            terrainMap[player.getX()][player.getY()].interact();
         }
     }
     public void moveRight(){
         if (terrainMap[player.getX() + 1][player.getY()].passable())
         {
             player.moveRight();
+            terrainMap[player.getX()][player.getY()].interact();
         }
     }
 }
