@@ -15,24 +15,51 @@ public class Map {
     
     Player player;
     
-    String[] charMap = {
-        "XXXXXXOXXXXXX",
-        "X   X   XXXXX",
-        "X / X   XXXXX",
-        "X   X   XXXXX",
-        "XX XXX[XXXXXX",
-        "X   X   X   X",
-        "X       _ / X",
-        "X   X   X   X",
-        "XXXXXXpXXXXXX"
+    String[][] charMap = {
+        {
+            "XXXXXXOXXXXXX",
+            "X   X   XXXXX",
+            "X / X   XXXXX",
+            "X   X   XXXXX",
+            "XX XXX[XXXXXX",
+            "X   X   X   X",
+            "X       _ / X",
+            "X   X   X   X",
+            "XXXXXXpXXXXXX"
+        },
+        {
+            "XXOXX",
+            "XX XX",
+            "XX_XX",
+            "X   X",
+            "X / X",
+            "X   X",
+            "XXpXX"
+        },
+        {
+            "XXXXXXXXXXOXX",
+            "X   X   X   X",
+            "X / X   _   X",
+            "X   X   X   X",
+            "XX XXX XXX_XX",
+            "X   X   X   X",
+            "X   [       X",
+            "X   X   X   X",
+            "XX_XXXXXXX XX",
+            "X   X   X   X",
+            "X /     X / X",
+            "X   X   X   X",
+            "XXXXXXpXXXXXX"
+        }
+        
     };
     
-    public Map(){
-        terrainMap = new Terrain[charMap[0].length()][charMap.length];
+    public Map(int mapSelect){
+        terrainMap = new Terrain[charMap[mapSelect][0].length()][charMap[mapSelect].length];
         
         for (int y = 0; y < terrainMap[0].length; y++){
             for (int x = 0; x<terrainMap.length;x++){
-                switch(charMap[y].charAt(x)){
+                switch(charMap[mapSelect][y].charAt(x)){
                     case 'X': terrainMap[x][y] = new Wall();
                         break;
                     case ' ': terrainMap[x][y] = new Floor();

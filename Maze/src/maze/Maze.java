@@ -17,11 +17,15 @@ public class Maze {
      */
     public static void main(String[] args){
 
-        Map m = new Map();
+        Map m = new Map(2);
         m.draw();
         Bot anna = new Bot(m);
         anna.pathFind();
-        
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        m.draw();
         while(anna.move()){
             long drawtime=System.currentTimeMillis()+500;
             while(System.currentTimeMillis()<drawtime){}
