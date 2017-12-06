@@ -16,8 +16,9 @@ public class Maze {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Map m = new Map();
+        Bot anna = new Bot(m);
         m.moveLeft();
         System.out.println("\n\n\n\n\n");
         m.draw();
