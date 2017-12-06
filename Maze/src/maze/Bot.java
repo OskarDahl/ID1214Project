@@ -18,8 +18,8 @@ public class Bot {
         avatar = m.player;
         map = m;
         simplifiedMaps = new int[2][m.getWidth()][m.getHeight()];
-        for (int y = 0; y < simplifiedMaps[0].length; y++){
-            for (int x = 0; x<simplifiedMaps.length;x++){
+        for (int y = 0; y < simplifiedMaps[0][0].length; y++){
+            for (int x = 0; x<simplifiedMaps[0].length;x++){
                 Terrain t = map.getTerrain(x, y);
                 if(t instanceof Floor){
                     simplifiedMaps[0][x][y]=0;
@@ -66,32 +66,53 @@ public class Bot {
     }
 
     private void pathFind(int map, int startX, int startY) {
+        System.out.println("[BOT/pathFind]: searching for paths from "+startX+","+startY);
         boolean[][] history = new boolean[simplifiedMaps[0].length][simplifiedMaps[0][0].length];
         for(int i = 0;i < history.length; i++){
             Arrays.fill(history[i],true);
         }
         history[startX][startY]=false;
-        Step current = new Step(startX,startY,null);
         LinkedList<Step> frontier = new LinkedList<>();
         LinkedList<Step> switches = new LinkedList<>();
+        
+        frontier.add(new Step(startX,startY,null));
+        
         while(!frontier.isEmpty()){
-            current = frontier.removeFirst();
-            if(simplifiedMaps[map][current.x][current.y]==3){
+            
+            Step current = frontier.removeFirst();
+            
+            System.out.println("[BOT/pathFind]: Step at "+current.x+","+current.y);
+            
+            if(simplifiedMaps[map][current.x][current.y]==3&&
+                    !(current.x==startX&&current.y==startY)){
+                System.out.println("[BOT/pathFind]: found switch at "+current.x+","+current.y);
                 switches.add(current);
             }
             else if(simplifiedMaps[map][current.x][current.y]==4){
-                System.out.println("DID THE THING!");
+                System.out.println("[BOT/pathFind]: DID THE THING!");
                 //TODO if exit
             }
             else{
-                for(int x=-1;x<2;x+=2){
-                    for(int y=-1;y<2;y+=2){
-                        if(history[x][y]){
-                            Step newStep = new Step(x,y,current);
+                for(int mod=0;mod<4;mod++){
+                    int nextX = current.x;
+                    int nextY = current.y;
+                    if(mod == 0)
+                        nextX++;
+                    if(mod == 1)
+                        nextX--;
+                    if(mod == 2)
+                        nextY++;
+                    if(mod == 3)
+                        nextY--;
+                    if(nextX<history.length&&nextX>=0&&
+                       nextY<history[0].length&&nextY>=0){
+                        if(history[nextX][nextY]&&simplifiedMaps[map][nextX][nextY]!=1){
+                            Step newStep = new Step(nextX,nextY,current);
                             frontier.add(newStep);
-                            history[x][y]=false;
+                            history[nextX][nextY]=false;
                         }
                     }
+                        
                 }
             }
         }

@@ -18,13 +18,9 @@ public class Maze {
     public static void main(String[] args) {
 
         Map m = new Map();
+        m.draw();
         Bot anna = new Bot(m);
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
+        anna.pathFind();
         /*m.draw();
         m.moveUp();
         System.out.println("\n\n\n\n\n");
