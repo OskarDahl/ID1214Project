@@ -104,4 +104,16 @@ public class Map {
             terrainMap[player.getX()][player.getY()].interact();
         }
     }
+
+    public int getWidth() {
+        return terrainMap.length;
+    }
+
+    public int getHeight() {
+        return terrainMap[0].length;
+    }
+    
+    public Terrain getTerrain(int x, int y){
+        return terrainMap[x][y];
+    }
 }
