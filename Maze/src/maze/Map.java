@@ -16,7 +16,7 @@ public class Map {
     Player player;
     
     String[] charMap = {
-        "XXXXXX XXXXXX",
+        "XXXXXXOXXXXXX",
         "X   X   XXXXX",
         "X / X   XXXXX",
         "X   X   XXXXX",
@@ -49,6 +49,8 @@ public class Map {
                         break;
                     case 'p': terrainMap[x][y] = new Floor();
                         player = new Player(x,y);
+                        break;
+                    case 'O': terrainMap[x][y] = new Exit();
                         break;
                     default: System.out.println("[Map/constructor]: YOU DIED");
                 }
