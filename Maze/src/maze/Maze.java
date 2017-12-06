@@ -15,37 +15,22 @@ public class Maze {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         Map m = new Map();
         m.draw();
         Bot anna = new Bot(m);
         anna.pathFind();
-        /*m.draw();
-        m.moveUp();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveUp();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();*/
+        
+        while(anna.move()){
+            long drawtime=System.currentTimeMillis()+500;
+            while(System.currentTimeMillis()<drawtime){}
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            m.draw();
+        }
     }
     
 }

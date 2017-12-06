@@ -9,7 +9,9 @@ public class Bot {
 
     private Player avatar;
     private Map map;
-    private Stack<Integer> path = new Stack<Integer>();
+    private Stack<Integer> path = new Stack<>();
+    //0=up 1=right 2=down 3=left
+    
     
     private int [][][] simplifiedMaps; 
 
@@ -50,7 +52,7 @@ public class Bot {
     }
 
     public void pathFind(){
-        pathFind(0,avatar.getX(),avatar.getY());
+        pathFind(0,new Step(avatar.getX(),avatar.getY(),null));
     }
 
     private void search(){
@@ -61,36 +63,46 @@ public class Bot {
 
     }
 
-    public void move(){
-
+    public boolean move(){
+        if(path.empty())
+            return false;
+        int move = path.pop();
+        if(move==0)
+            map.moveUp();
+        if(move==1)
+            map.moveRight();
+        if(move==2)
+            map.moveDown();
+        if(move==3)
+            map.moveLeft();
+        return true;
     }
 
-    private void pathFind(int map, int startX, int startY) {
-        System.out.println("[BOT/pathFind]: searching for paths from "+startX+","+startY);
+    private void pathFind(int map, Step origin) {
+        System.out.println("[BOT/pathFind]: searching for paths from "+origin.x+","+origin.y);
         boolean[][] history = new boolean[simplifiedMaps[0].length][simplifiedMaps[0][0].length];
         for(int i = 0;i < history.length; i++){
             Arrays.fill(history[i],true);
         }
-        history[startX][startY]=false;
+        history[origin.x][origin.y]=false;
         LinkedList<Step> frontier = new LinkedList<>();
         LinkedList<Step> switches = new LinkedList<>();
         
-        frontier.add(new Step(startX,startY,null));
+        frontier.add(origin);
         
         while(!frontier.isEmpty()){
             
             Step current = frontier.removeFirst();
             
-            System.out.println("[BOT/pathFind]: Step at "+current.x+","+current.y);
             
             if(simplifiedMaps[map][current.x][current.y]==3&&
-                    !(current.x==startX&&current.y==startY)){
+                    !(current.x==origin.x&&current.y==origin.y)){
                 System.out.println("[BOT/pathFind]: found switch at "+current.x+","+current.y);
                 switches.add(current);
             }
             else if(simplifiedMaps[map][current.x][current.y]==4){
                 System.out.println("[BOT/pathFind]: DID THE THING!");
-                //TODO if exit
+                setPath(current);
             }
             else{
                 for(int mod=0;mod<4;mod++){
@@ -118,9 +130,28 @@ public class Bot {
         }
         while(!switches.isEmpty()){
             Step next = switches.removeFirst();
-            pathFind((map+1%2),next.x,next.y);
+            pathFind((map+1%2),next);
         }
         
+    }
+    
+    
+    private void setPath(Step step){
+        if(step.x-1==step.came_from.x){
+            path.push(1);
+        }
+        if(step.x+1==step.came_from.x){
+            path.push(3);
+        }
+        if(step.y-1==step.came_from.y){
+            path.push(2);
+        }
+        if(step.y+1==step.came_from.y){
+            path.push(0);
+        }
+        if(step.came_from.came_from!=null){
+            setPath(step.came_from);
+        }
     }
 }
 
