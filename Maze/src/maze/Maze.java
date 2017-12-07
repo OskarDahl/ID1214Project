@@ -17,7 +17,7 @@ public class Maze {
      */
     public static void main(String[] args){
 
-        Map m = new Map(5);
+        Map m = new Map(0);
         m.draw();
         Bot anna = new Bot(m);
         anna.pathFind();
@@ -27,7 +27,7 @@ public class Maze {
         System.out.println();
         m.draw();
         while(anna.move()){
-            long drawtime=System.currentTimeMillis()+300;
+            long drawtime=System.currentTimeMillis()+400;
             while(System.currentTimeMillis()<drawtime){}
             System.out.println();
             System.out.println();

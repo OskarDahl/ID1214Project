@@ -79,6 +79,17 @@ public class Map {
             "X       / / X",
             "X   XXX     X",
             "XXXXXXXXXpXXX"
+        },
+        {
+            "XXOXXXXXX",
+            "X   X   X",
+            "X   _   X",
+            "X   X   X",
+            "XXXXXX[XX",
+            "X       X",
+            "X /   / X",
+            "X       X",
+            "XXXXpXXXX"
         }
         
     };
