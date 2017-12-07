@@ -17,39 +17,25 @@ public class Maze {
      */
     public static void main(String[] args) {
 
-        Map m = new Map();
+        Map m = new Map(3);
         Bot anna = new Bot(m);
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
+        anna.pathFind();
         m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        /*m.draw();
-        m.moveUp();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveUp();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveRight();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();
-        m.moveLeft();
-        System.out.println("\n\n\n\n\n");
-        m.draw();*/
+        if (anna.pathExist()) {
+            while (anna.move()) {
+                long drawtime = System.currentTimeMillis() + 800;
+                while (System.currentTimeMillis() < drawtime) {
+                }
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                m.draw();
+            }
+            System.out.println("Winning!");
+            return;
+        }
+        System.out.println("No path exists :(");
     }
     
 }

@@ -10,29 +10,97 @@ package maze;
  */
 
 public class Map {
+
     
     Terrain[][] terrainMap;
     
     Player player;
-    
-    String[] charMap = {
-        "XXXXXXOXXXXXX",
-        "X   X   XXXXX",
-        "X / X   XXXXX",
-        "X   X   XXXXX",
-        "XX XXX[XXXXXX",
-        "X   X   X   X",
-        "X       _ / X",
-        "X   X   X   X",
-        "XXXXXXpXXXXXX"
+
+    String[][] charMap = {
+            {
+                    "XXXXXXOXXXXXX",
+                    "X   X   XXXXX",
+                    "X / X   XXXXX",
+                    "X   X   XXXXX",
+                    "XX XXX[XXXXXX",
+                    "X   X   X   X",
+                    "X       _ / X",
+                    "X   X   X   X",
+                    "XXXXXXpXXXXXX"
+            },
+            {
+                    "XXOXX",
+                    "XX XX",
+                    "XX_XX",
+                    "X   X",
+                    "X / X",
+                    "X   X",
+                    "XXpXX"
+            },
+            {
+                    "XXXXXXXXXXOXX",
+                    "X   X   X   X",
+                    "X / X   _   X",
+                    "X   X   X   X",
+                    "XX XXX XXX_XX",
+                    "X   X   X   X",
+                    "X   [       X",
+                    "X   X   X   X",
+                    "XX_XXXXXXX XX",
+                    "X   X   X   X",
+                    "X /     X / X",
+                    "X   X   X   X",
+                    "XXXXXXpXXXXXX"
+            },
+            {
+                    "XXOXX",
+                    "XX_XX",
+                    "XX XX",
+                    "X / X",
+                    "X   X",
+                    "XXpXX"
+            },
+            {
+                    "XXXXXXXXXXXXOXXXXX",
+                    "X             XXXX",
+                    "X XXXXXXXXX   XXXX",
+                    "X XXXXXXXXXX[XXXXX",
+                    "X XXXXXXXXX   X  X",
+                    "X               /X",
+                    "XXXXXXXXXXX   X  X",
+                    "XXXXXXXXXXXXpXXXXX"
+            },
+            {
+                    "XXXXXXXXXXOXX",
+                    "X   X   X   X",
+                    "X / [ / _   X",
+                    "X   X   X   X",
+                    "XX XXXXXXXXXX",
+                    "X   XXX     X",
+                    "X       / / X",
+                    "X   XXX     X",
+                    "XXXXXXXXXpXXX"
+            },
+            {
+                    "XXOXXXXXX",
+                    "X   X   X",
+                    "X   _   X",
+                    "X   X   X",
+                    "XXXXXX[XX",
+                    "X       X",
+                    "X /   / X",
+                    "X       X",
+                    "XXXXpXXXX"
+            }
+
     };
-    
-    public Map(){
-        terrainMap = new Terrain[charMap[0].length()][charMap.length];
-        
+
+    public Map(int mapSelect){
+        terrainMap = new Terrain[charMap[mapSelect][0].length()][charMap[mapSelect].length];
+
         for (int y = 0; y < terrainMap[0].length; y++){
             for (int x = 0; x<terrainMap.length;x++){
-                switch(charMap[y].charAt(x)){
+                switch(charMap[mapSelect][y].charAt(x)){
                     case 'X': terrainMap[x][y] = new Wall();
                         break;
                     case ' ': terrainMap[x][y] = new Floor();
@@ -56,7 +124,7 @@ public class Map {
                 }
             }
         }
-        
+
     }
     
     public void draw(){
@@ -103,5 +171,17 @@ public class Map {
             player.moveRight();
             terrainMap[player.getX()][player.getY()].interact();
         }
+    }
+
+    public boolean canMoveTo(int x, int y, int switchOn){
+        if(switchOn == 1 && terrainMap[x][y] instanceof Door){
+            return !terrainMap[x][y].passable();
+        }
+        else
+            return terrainMap[x][y].passable();
+    }
+
+    public boolean isSwitch(int x, int y){
+        return terrainMap[x][y] instanceof Switch;
     }
 }
