@@ -50,6 +50,35 @@ public class Map {
             "X /     X / X",
             "X   X   X   X",
             "XXXXXXpXXXXXX"
+        },
+        {
+            "XXOXX",
+            "XX_XX",
+            "XX XX",
+            "X / X",
+            "X   X",
+            "XXpXX"
+        },
+        {
+            "XXXXXXXXXXXXOXXXXX",
+            "X             XXXX",
+            "X XXXXXXXXX   XXXX",
+            "X XXXXXXXXXX[XXXXX",
+            "X XXXXXXXXX   X  X",
+            "X               /X",
+            "XXXXXXXXXXX   X  X",
+            "XXXXXXXXXXXXpXXXXX"
+        },
+        {
+            "XXXXXXXXXXOXX",
+            "X   X   X   X",
+            "X / [ / _   X",
+            "X   X   X   X",
+            "XX XXXXXXXXXX",
+            "X   XXX     X",
+            "X       / / X",
+            "X   XXX     X",
+            "XXXXXXXXXpXXX"
         }
         
     };

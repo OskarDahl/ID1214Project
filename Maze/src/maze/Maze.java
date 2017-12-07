@@ -17,7 +17,7 @@ public class Maze {
      */
     public static void main(String[] args){
 
-        Map m = new Map(2);
+        Map m = new Map(0);
         m.draw();
         Bot anna = new Bot(m);
         anna.pathFind();
