@@ -95,17 +95,16 @@ public class Bot {
         for(int i = 0;i < history.length; i++){
             Arrays.fill(history[i],true);
         }
-        history[origin.x][origin.y]=false;
+        //history[origin.x][origin.y]=false;
         LinkedList<Step> frontier = new LinkedList<>();
-        LinkedList<Step> switches = new LinkedList<>();
-        
+        boolean notFirst=false;
         frontier.add(origin);
         
         while(!frontier.isEmpty()){
             
             Step current = frontier.removeFirst();
             if(simplifiedMaps[map][current.x][current.y]==3&&
-                    !(current.x==origin.x&&current.y==origin.y)){
+                    notFirst){
                 System.out.println("[BOT/pathFind]: found switch at "+current.x+","+current.y);
                 pathfindingNodes.add(new PathfindingNode(current,((map+1)%2)));
             }
@@ -137,6 +136,7 @@ public class Bot {
                         
                 }
             }
+            notFirst=true;
         }
         return false;
     }
