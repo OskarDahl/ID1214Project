@@ -14,6 +14,8 @@ public class Bot {
     
     
     private int [][][] simplifiedMaps; 
+    
+    private LinkedList<PathfindingNode> pathfindingNodes;
 
 
     public Bot(Map m) {
@@ -52,7 +54,16 @@ public class Bot {
     }
 
     public void pathFind(){
-        pathFind(0,new Step(avatar.getX(),avatar.getY(),null));
+        pathfindingNodes = new LinkedList();
+        pathfindingNodes.add(new PathfindingNode
+            (new Step(avatar.getX(),avatar.getY(),null),0));
+        while(!pathfindingNodes.isEmpty()){
+            PathfindingNode pn = pathfindingNodes.removeFirst();
+            if (pathFind(pn.map,pn.step)){
+                break;
+            }
+        }
+        
     }
 
     private void search(){
@@ -96,7 +107,7 @@ public class Bot {
             if(simplifiedMaps[map][current.x][current.y]==3&&
                     !(current.x==origin.x&&current.y==origin.y)){
                 System.out.println("[BOT/pathFind]: found switch at "+current.x+","+current.y);
-                switches.add(current);
+                pathfindingNodes.add(new PathfindingNode(current,((map+1)%2)));
             }
             else if(simplifiedMaps[map][current.x][current.y]==4){
                 System.out.println("[BOT/pathFind]: DID THE THING!");
@@ -126,11 +137,6 @@ public class Bot {
                         
                 }
             }
-        }
-        while(!switches.isEmpty()){
-            Step next = switches.removeFirst();
-            if(pathFind(((map+1)%2),next))
-                return true;
         }
         return false;
     }
@@ -167,4 +173,15 @@ class Step{
         came_from=past;
     }
     
+}
+
+
+class PathfindingNode{
+    public final Step step;
+    public final int map;
+    
+    public PathfindingNode(Step s, int m){
+        step = s;
+        map = m;
+    }
 }
